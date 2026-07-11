@@ -1,19 +1,18 @@
+// src/components/PropertyCard.jsx
 import { Link } from 'react-router-dom';
-import.meta.env.BASE_URL
 import { useFavourites } from '../context/FavouritesContext';
 
-
 function shortDescription(text, maxLength = 120) {
-  const plain = text.replace(/<br\s*\/?>/gi, ' '); 
+  const plain = text.replace(/<br\s*\/?>/gi, ' ');
   if (plain.length <= maxLength) return plain;
   return plain.slice(0, maxLength).replace(/\s+\S*$/, '') + '…';
 }
 
 function PropertyCard({ property }) {
   const { isFavourite, addFavourite, removeFavourite } = useFavourites();
-const saved = isFavourite(property.id);
+  const saved = isFavourite(property.id);
 
-const toggleFavourite = (event) => {
+  const toggleFavourite = (event) => {
     event.preventDefault(); // stop the click also triggering the card's link
     if (saved) {
       removeFavourite(property.id);
@@ -21,14 +20,22 @@ const toggleFavourite = (event) => {
       addFavourite(property);
     }
   };
+
   return (
-    <li className="property-card">
+    <li
+      className="property-card"
+      draggable
+      onDragStart={(event) => {
+        event.dataTransfer.setData('application/json', JSON.stringify(property));
+      }}
+    >
       <img
         className="property-card__image"
         src={`${import.meta.env.BASE_URL}${property.picture}`}
         alt={`${property.type} at ${property.location}`}
+        draggable={false}
       />
-      
+
       <button
         className={saved ? 'favourite-btn favourite-btn--active' : 'favourite-btn'}
         onClick={toggleFavourite}

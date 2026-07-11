@@ -6,6 +6,7 @@ import PropertyCard from './PropertyCard';
 import { searchProperties } from '../utils/searchProperties';
 import propertiesData from '../data/properties.json';
 import '../App.css';
+import FavouritesPanel from './FavouritesPanel';
 
 function SearchPage() {
   const allProperties = propertiesData.properties;
@@ -22,6 +23,9 @@ function SearchPage() {
     <div className="app">
       <h1>Find your property</h1>
       <SearchForm onSearch={handleSearch} />
+      <h1>Find your property</h1>
+        <FavouritesPanel />
+        <SearchForm onSearch={handleSearch} />
 
       <p>{results.length} properties found</p>
       <ul className="results-grid">

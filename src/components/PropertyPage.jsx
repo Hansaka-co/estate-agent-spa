@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import propertiesData from '../data/properties.json';
+import { useFavourites } from '../context/FavouritesContext';
 
 
 function buildImageList(property) {
@@ -37,10 +38,28 @@ function PropertyPage() {
     );
   }
 
+const { isFavourite, addFavourite, removeFavourite } = useFavourites();
+const saved = isFavourite(property.id);
+
+const toggleFavourite = () => {
+  if (saved) {
+    removeFavourite(property.id);
+  } else {
+    addFavourite(property);
+  }
+};
+
   return (
     <div className="property-page">
       <Link to="/" className="back-link">← Back to search</Link>
       <h1>{property.type} in {property.location}</h1>
+      <button
+        className={saved ? 'favourite-btn-large favourite-btn-large--active' : 'favourite-btn-large'}
+        onClick={toggleFavourite}
+        aria-label={saved ? 'Remove from favourites' : 'Add to favourites'}
+      >
+        {saved ? '★ Saved to favourites' : '☆ Add to favourites'}
+      </button>
       <p className="property-page__summary">
         £{property.price.toLocaleString()} · {property.bedrooms} bedrooms · {property.tenure}
       </p>
