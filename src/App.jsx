@@ -5,6 +5,7 @@ import 'react-widgets/styles.css';
 import SearchForm from './components/SearchForm';
 import { searchProperties } from './utils/searchProperties';
 import propertiesData from './data/properties.json';
+import PropertyCard from './components/PropertyCard';
 
 function App() {
   const allProperties = propertiesData.properties;
@@ -23,13 +24,11 @@ function App() {
       <SearchForm onSearch={handleSearch} />
 
       <p>{results.length} properties found</p>
-      <ul>
-        {results.map((property) => (
-          <li key={property.id}>
-            {property.type} — £{property.price.toLocaleString()} — {property.location}
-          </li>
-        ))}
-      </ul>
+        <ul className="results-grid">
+          {results.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </ul>
     </div>
   );
 }

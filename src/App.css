@@ -182,3 +182,53 @@
     border-right-color: var(--border);
   }
 }
+
+.results-grid {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.property-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.property-card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.property-card__body {
+  padding: 12px 16px;
+}
+
+.property-card__price {
+  margin: 0 0 4px;
+  font-size: 1.2rem;
+}
+
+.property-card__meta {
+  margin: 0 0 8px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.property-card__desc {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.property-card__link {
+  font-weight: 600;
+  text-decoration: none;
+}
