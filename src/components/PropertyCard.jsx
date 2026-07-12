@@ -1,6 +1,7 @@
 // src/components/PropertyCard.jsx
 import { Link } from 'react-router-dom';
 import { useFavourites } from '../context/FavouritesContext';
+import { BASE_URL } from '../utils/baseUrl';
 
 function shortDescription(text, maxLength = 120) {
   const plain = text.replace(/<br\s*\/?>/gi, ' ');
@@ -31,7 +32,7 @@ function PropertyCard({ property }) {
     >
       <img
         className="property-card__image"
-        src={`${import.meta.env.BASE_URL}${property.picture}`}
+        src={`${BASE_URL}${property.picture}`}
         alt={`${property.type} at ${property.location}`}
         draggable={false}
       />
