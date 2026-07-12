@@ -1,6 +1,15 @@
 // src/context/FavouritesContext.jsx
 import { createContext, useContext, useState } from 'react';
 
+// Pure helper: given the current favourites and a property to add,
+// returns the new list — without adding a duplicate. Exported so it
+// can be tested directly, without needing to render any component.
+export function addToFavourites(currentFavourites, property) {
+  const alreadySaved = currentFavourites.some((p) => p.id === property.id);
+  if (alreadySaved) return currentFavourites;
+  return [...currentFavourites, property];
+}
+
 // The "box" that will hold shared favourites state.
 const FavouritesContext = createContext(null);
 
@@ -10,11 +19,7 @@ export function FavouritesProvider({ children }) {
 
   // Add a property, but only if it isn't already saved (duplicate prevention).
   const addFavourite = (property) => {
-    setFavourites((prev) => {
-      const alreadySaved = prev.some((p) => p.id === property.id);
-      if (alreadySaved) return prev;
-      return [...prev, property];
-    });
+  setFavourites((prev) => addToFavourites(prev, property));
   };
 
   // Remove one property by id.
