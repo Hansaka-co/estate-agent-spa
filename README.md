@@ -28,7 +28,7 @@ npm test
 \`\`\`
 
 ## Live site
-[Add your GitHub Pages URL here]
+https://hansaka-co.github.io/estate-agent-spa/
 
 ## Tech stack
 React, Vite, React Router, react-widgets, react-tabs, Jest, React Testing Library
