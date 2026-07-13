@@ -19,7 +19,7 @@ export function FavouritesProvider({ children }) {
 
   // Add a property, but only if it isn't already saved (duplicate prevention).
   const addFavourite = (property) => {
-  setFavourites((prev) => addToFavourites(prev, property));
+    setFavourites((prev) => addToFavourites(prev, property));
   };
 
   // Remove one property by id.

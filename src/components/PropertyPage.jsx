@@ -38,16 +38,16 @@ function PropertyPage() {
     );
   }
 
-const { isFavourite, addFavourite, removeFavourite } = useFavourites();
-const saved = isFavourite(property.id);
+  const { isFavourite, addFavourite, removeFavourite } = useFavourites();
+  const saved = isFavourite(property.id);
 
-const toggleFavourite = () => {
-  if (saved) {
-    removeFavourite(property.id);
-  } else {
-    addFavourite(property);
-  }
-};
+  const toggleFavourite = () => {
+    if (saved) {
+      removeFavourite(property.id);
+    } else {
+      addFavourite(property);
+    }
+  };
 
   return (
     <div className="property-page">

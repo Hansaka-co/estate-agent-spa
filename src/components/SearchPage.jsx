@@ -24,8 +24,8 @@ function SearchPage() {
       <h1>Find your property</h1>
       <SearchForm onSearch={handleSearch} />
       <h1>Find your property</h1>
-        <FavouritesPanel />
-        <SearchForm onSearch={handleSearch} />
+      <FavouritesPanel />
+      <SearchForm onSearch={handleSearch} />
 
       <p>{results.length} properties found</p>
       <ul className="results-grid">
